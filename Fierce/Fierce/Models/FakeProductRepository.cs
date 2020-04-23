@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fierce.Models
 {
-    public class FakeProductReposistory : IProductRepository
+    public class FakeProductRepository : IProductRepository
     {
         public IQueryable<Product> Products => new List<Product> {
         new Product { Name = "Fierce & Favored", Price = 28 },
