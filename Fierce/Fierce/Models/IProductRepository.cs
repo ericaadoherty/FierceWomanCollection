@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fierce.Models
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         IQueryable<Product> Products { get; }
     }
