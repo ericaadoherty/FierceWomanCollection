@@ -4,10 +4,17 @@
     <link rel="stylesheet"
           asp-href-include="/lib/bootstrap/css/**/*.min.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/*.css" />
     <meta name="viewport" content="width=device-width" />
     <title>Fierce Woman Collection</title>
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="col-3 navbar-brand" href="#">Fierce Woman Collection</a>
+        <div class="col-4 text-right">
+            @await Component.InvokeAsync("CartSummary")
+        </div>
+    </nav>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Fierce Woman Collection</a>
     </nav>

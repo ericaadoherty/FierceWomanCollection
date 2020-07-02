@@ -21,6 +21,12 @@ namespace Fierce
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
+                    webBuilder.UseDefaultServiceProvider((context, options) =>
+                    {
+                        options.ValidateScopes = false;
+                    });
                 });
+
     }
 }
