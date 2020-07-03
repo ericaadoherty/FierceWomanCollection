@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fierce.Models
 {
-    public class EFProductRepository
+    public class EFProductRepository : IProductRepository
     {
         private ApplicationDbContext context;
         public EFProductRepository(ApplicationDbContext ctx)

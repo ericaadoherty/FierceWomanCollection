@@ -24,8 +24,10 @@ namespace Fierce
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:FierceProducts:ConnectionString"]));
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
-            services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<IProductRepository, FakeProductRepository>();
+            //services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
+            services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
