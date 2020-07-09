@@ -16,8 +16,21 @@ namespace Fierce.Infrastructure
         public static T GetJson<T>(this ISession session, string key)
         {
             var sessionData = session.GetString(key);
-            return sessionData == null
-                ? default(T) : JsonConvert.DeserializeObject<T>(sessionData);
+
+            if(sessionData == null)
+            {
+                return default(T);
+            }
+            else
+            {
+                T Temp = default(T);
+                Temp = JsonConvert.DeserializeObject<T>(sessionData);
+                return Temp;
+            }
+
+
+            //return sessionData == null
+                //? default(T) : JsonConvert.DeserializeObject<T>(sessionData);
         }
     }
 }

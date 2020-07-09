@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Fierce.Models
 {
     public class Cart
-    {
+    {       
         private List<CartLine> lineCollection = new List<CartLine>();
         public virtual void AddItem(Product product, int quantity)
         {
