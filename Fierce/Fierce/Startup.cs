@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Fierce.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Fierce
 {
@@ -23,6 +24,10 @@ namespace Fierce
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:FierceProducts:ConnectionString"]));
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:FierceIdentity:ConnectionString"]));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             //services.AddSingleton<HttpContextAccessor, HttpContextAccessor>();
             services.AddHttpContextAccessor();
@@ -43,6 +48,7 @@ namespace Fierce
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -84,6 +90,7 @@ namespace Fierce
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

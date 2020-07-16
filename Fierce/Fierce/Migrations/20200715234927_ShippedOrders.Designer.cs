@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fierce.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200708230217_ShippedOrders")]
+    [Migration("20200715234927_ShippedOrders")]
     partial class ShippedOrders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,9 @@ namespace Fierce.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Shipped")
+                        .HasColumnType("bit");
 
                     b.Property<string>("State")
                         .IsRequired()
