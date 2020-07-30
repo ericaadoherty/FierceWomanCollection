@@ -26,8 +26,25 @@ namespace Fierce.Models
                 line.Quantity += quantity;
             }
         }
-        public virtual void RemoveLine(Product product) =>
-            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+
+        public virtual void RemoveLine(Product product)
+        {
+            CartLine line = lineCollection
+                .Where(p => p.Product.ProductID == product.ProductID)
+                .FirstOrDefault();
+            if (line != null)
+            {
+                
+                line.Quantity -=1;
+            }
+            if (line.Quantity == 0)
+            {
+                lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+            }
+        }
+        //public virtual void RemoveLine(Product product) =>
+        //lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+
         public virtual decimal ComputeTotalValue() =>
             lineCollection.Sum(e => e.Product.Price * e.Quantity);
         public virtual void Clear() => lineCollection.Clear();
