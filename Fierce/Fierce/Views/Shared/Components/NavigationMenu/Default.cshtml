@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<string>
-<a class="btn btn-block btn-secondary"
+<a class="btn" style="font-family: 'Roboto', sans-serif; font-size: 25px;"
    asp-action="List"
    asp-controller="Product"
    asp-route-category="">
@@ -7,7 +7,7 @@
 </a>
 @foreach (string category in Model)
 {
-    <a class="btn btn-block btn-secondary"
+    <a class="btn" style="font-family: 'Roboto', sans-serif; font-size: 25px; "
        asp-action="List"
        asp-controller="Product"
        asp-route-category="@category"
