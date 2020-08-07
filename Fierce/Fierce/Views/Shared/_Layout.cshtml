@@ -12,22 +12,32 @@
 </head>
 <body>
     <ul class="nav justify-content-end">
-    <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" style="font-family: 'Roboto', sans-serif;">
-            @await Component.InvokeAsync("NavigationMenu")
-                </a>
-    </li>
-        </ul>
+                @await Component.InvokeAsync("NavigationMenu")
+            </a>
+        </li>
+    </ul>
     <a class="nav-link text-center" style="color:black; font-family: 'Playfair Display SC', serif; font-size:70px;" href="#">Fierce Woman Collection</a>
     <div class="row">
         @await Component.InvokeAsync("CartSummary")
     </div>
-    <a class="btn btn-sm btn-primary" asp-action="Login" asp-controller="Account">Login</a>
+
     <div class="row m-1 p-1">
-        
+
         <div class="row">
             @RenderBody()
         </div>
     </div>
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            @DateTime.Now.Year Copyright
+            <a class="btn btn-sm btn-primary" style="float:right;" asp-action="Login" asp-controller="Account">Login</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 </body>
 </html>

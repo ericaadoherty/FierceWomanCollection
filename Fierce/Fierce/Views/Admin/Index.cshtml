@@ -18,7 +18,7 @@
     <td class ="text-right">@item.Price.ToString("c")</td>
     <td class ="text-center">
                     <form asp-action ="Delete" method="post">
-                        <a asp-action ="Edit" class="btn btn-sm btn-warning"
+                        <a asp-action ="Edit" class="btn btn-sm" style="background-color:#BF995A; color:white;"
                            asp-route-productId="@item.ProductID">
                             Edit
                             </a>
@@ -32,6 +32,7 @@
     </tr>
     }
     </table>
-<div class ="text-center">
-    <a asp-action ="Create" class="btn btn-primary">Add Product</a>
+<div class="text-center">
+    <a asp-action="Create" class="btn btn-primary">Add Product</a>
+    <a asp-action="List" asp-controller="Order" class="btn btn-primary">View Orders</a>
 </div>
